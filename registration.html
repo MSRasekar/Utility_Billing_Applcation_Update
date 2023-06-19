@@ -31,6 +31,7 @@
 
   <!-- Template Stylesheet -->
   <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/registration_form.css">
   <title>Registration Form</title>
 
 </head>
@@ -50,7 +51,7 @@
     <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
       <h2 class="m-0 text-warning"><img
           src="https://cdn.iconscout.com/icon/free/png-256/free-electricity-bill-1817232-1538101.png" alt="" height="50"
-          width="50"></i>eBill Seva</h2>
+          width="50">eBill Seva</h2>
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
       <span class="navbar-toggler-icon"></span>
@@ -59,104 +60,103 @@
       <div class="navbar-nav ms-auto p-4 p-lg-0">
         <a href="index.html" class="nav-item nav-link">Home</a>
         <a href="#" class="nav-item nav-link">About</a>
-        <a href="#" class="nav-item nav-link">Service</a>
-        <div class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Apply for Connectoin</a>
-          <div class="dropdown-menu fade-down m-0">
-            <a href="registration.html" class="dropdown-item">Commercial</a>
-            <a href="registration.html" class="dropdown-item">Non-Commercial</a>
-            <a href="#" class="dropdown-item">Learn More</a>
-          </div>
-        </div>
+        <a href="#" class="nav-item nav-link">Services</a>
         <a href="#" class="nav-item nav-link">Contact</a>
       </div>
-      <a href="registration.html" class="btn btn-warning py-4 px-lg-5 d-none d-lg-block">Register Now<i
+      <a href="user_login.html" class="btn btn-warning py-4 px-lg-5 d-none d-lg-block">Sign in<i
           class="fa fa-arrow-right ms-3"></i></a>
     </div>
   </nav>
   <!-- Navbar End -->
 
   <!-- Registration Form Start -->
-  <div class="container mt-5">
-    <h2 class="note">New Connection Application Form</h2>
-    <form onsubmit="return validateDOB()">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="Enter username" maxlength="16" required>
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" required>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Enter password" maxlength="16" required>
-      </div>
-      <div class="form-group">
-        <label for="mobileNumber">Mobile Number</label>
-        <input type="number" class="form-control" id="mobileNumber" placeholder="Enter Mobile Number" required>
-      </div>
-      <div class="form-group">
-        <label for="gender">Gender</label>
-        <select class="form-control" id="gender" required>
-          <option value="">Select gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="state">State</label>
-        <input type="text" class="form-control" id="state" placeholder="Enter state" required>
-      </div>
-      <div class="form-group">
-        <label for="city">City</label>
-        <input type="text" class="form-control" id="city" placeholder="Enter city" required>
-      </div>
-      <div class="form-group">
-        <label for="address">Permanent Address</label>
-        <textarea class="form-control" id="address" rows="3" required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="dob">Date of Birth</label>
-        <input type="date" class="form-control" id="dob" required>
-      </div>
-      <div class="form-group">
-        <label for="marital-status">Marital Status</label>
-        <select class="form-control" id="marital-status" required>
-          <option value="">Select marital status</option>
-          <option value="single">Single</option>
-          <option value="married">Married</option>
-          <option value="divorced">Divorced</option>
-          <option value="widowed">Widowed</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="load">Required Load in Meter</label>
-        <select class="form-control" id="load" required>
-          <option value="">Select load type</option>
-          <option value="single-phase">Single Phase</option>
-          <option value="three-phase">Three Phase</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="connection-type">Connection Type</label>
-        <select class="form-control" id="connection-type" required>
-          <option value="">Select connection type</option>
-          <option value="commercial">Commercial</option>
-          <option value="non-commercial">Non-Commercial</option>
-        </select>
-      </div>
-      <div class="form-group justify-content-end">
+  <div class="container-fluid register-page">
+    <div class="container ">
+      <form id="registration-form">
+        <div class="row jumbotron box8">
+          <div class="mt-5 mb-4">
+            <h2 class="text-center text-white">New Connection Application Form</h2>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name="username" id="username" maxlength="16" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" id="email" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control col-sm-6" name="password" id="password" maxlength="16" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="mobileNumber">Mobile Number</label>
+            <input type="number" class="form-control" name="mobileNumber" id="mobileNumber" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="gender">Gender</label>
+            <select class="form-control" id="gender" required>
+              <option disabled>Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="col-sm-3 form-group">
+            <label for="State">State</label>
+            <input type="address" class="form-control" name="State" id="State" required>
+          </div>
+          <div class="col-sm-3 form-group">
+            <label for="city">City</label>
+            <input type="city" class="form-control" name="city" id="city" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="address">Permanent Address</label>
+            <input type="text" class="form-control" id="address" required></input>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="Date">Date Of Birth</label>
+            <input type="Date" name="dob" class="form-control" id="dob" placeholder="" required>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="marital-status">Marital Status</label>
+            <select class="form-control" id="marital-status" required>
+              <option value="" disabled>Select marital status</option>
+              <option value="single">Single</option>
+              <option value="married">Married</option>
+              <option value="divorced">Divorced</option>
+              <option value="widowed">Widowed</option>
+            </select>
+          </div>
 
-        <button type="submit" class="btn btn-warning btn-lg ">Submit</button>
-      </div>
-    </form>
+          <div class="col-sm-6 form-group">
+            <label for="load">Required Load in Meter</label>
+            <select class="form-control" id="load" required>
+              <option value="" disabled>Select load type</option>
+              <option value="single-phase">Single Phase</option>
+              <option value="three-phase">Three Phase</option>
+            </select>
+          </div>
+          <div class="col-sm-6 form-group">
+            <label for="connection-type">Connection Type</label>
+            <select class="form-control" id="connection-type" required>
+              <option value="" disabled>Select connection type</option>
+              <option value="commercial">Commercial</option>
+              <option value="non-commercial">Non-Commercial</option>
+            </select>
+          </div>
+          <div class="col-sm-12 form-group mb-0">
+            <button type="submit"
+              class="btn btn-warning btn-lg mt-5 mb-5 col-md-4 offset-md-4 btn-submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
   <!-- Registration Form End -->
 
   <!-- Footer Start -->
-  <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+  <div class="container-fluid bg-dark text-light footer pt-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container py-5">
       <div class="row g-5">
         <div class="col-lg-3 col-md-6">
@@ -169,8 +169,8 @@
         </div>
         <div class="col-lg-3 col-md-6">
           <h4 class="text-white mb-3">Contact</h4>
-          <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Navi Mumbai, Maharashtra, India 400 022</p>
-          <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 89634 67890</p>
+          <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>City, State, Country 400 000</p>
+          <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+91 11111 11111</p>
           <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@ebillseva.com</p>
           <div class="d-flex pt-2">
             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
@@ -179,6 +179,7 @@
             <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
+
         <div class="col-lg-3 col-md-6">
           <h4 class="text-white mb-3">Newsletter</h4>
           <p>Subscribe for more updates</p>
@@ -211,9 +212,9 @@
   </div>
   <!-- Footer End -->
 
-
   <!-- Back to Top -->
   <a href="#" class="btn btn-lg btn-warning btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
   <!-- JavaScript Libraries -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -221,36 +222,12 @@
   <script src="lib/easing/easing.min.js"></script>
   <script src="lib/waypoints/waypoints.min.js"></script>
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <Script>
-    function validateDOB() {
-      var dob = document.getElementById("dob").value;
-      var today = new Date();
-      var birthDate = new Date(dob);
-      var age = today.getFullYear() - birthDate.getFullYear();
-      var monthDiff = today.getMonth() - birthDate.getMonth();
-      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-      }
-      if (age < 18) {
-        alert("Your Age must be more than 18 to apply.");
-        return false;
-      }
-      return true;
-    }
-
-    document.getElementById("mobileNumber").addEventListener("input", function () {
-      var mobileNumber = this.value.replace(/\D/g, ''); // Remove non-numeric characters
-
-      if (mobileNumber.length > 10) {
-        mobileNumber = mobileNumber.slice(0, 10); // Limit to 10 digits
-      }
-
-      this.value = mobileNumber;
-    });
-  </Script>
-
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
+  <!-- Validtion JavaScript -->
+  <!-- <script src="js/validations/validatior.js"></script>
+  <script src="js/datastore/user_data.js"></script> -->
+  <script src="js/register_validator.js"></script>
 </body>
 
 </html>

@@ -450,3 +450,11 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
   -moz-appearance: textfield; /* Firefox */
 }
+
+.bg-page {
+  background-image: url(https://cdn.pixabay.com/photo/2022/03/30/15/49/power-7101420_1280.jpg);
+  opacity: 0.9;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}

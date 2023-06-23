@@ -82,12 +82,12 @@
                     <div class="card-body">
                         <form action="" onsubmit=" getApplicationStatus(event)">
                             <div class="form-group mb-5">
-                                <label for="mobileNumber">Enter Registered Mobile Number</label>
+                                <label for="mobileNumber" name="mobileNumber">Enter Registered Mobile Number</label>
                                 <input type="number" class="form-control mt-3" id="mobileNumber"
                                     placeholder="Enterb Mobile Number" autofocus />
                             </div>
                             <div class="d-grid">
-                                <button class="btn btn-warning" type="submit" onclick=>Get Your Application
+                                <button class="btn btn-warning" type="submit" name="submit" id="submit" onclick=>Get Your Application
                                     Status</button>
                             </div>
                         </form>
@@ -100,7 +100,7 @@
 
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5  wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">

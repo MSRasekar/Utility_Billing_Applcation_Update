@@ -41,7 +41,7 @@ function validateLoginForm(event) {
       window.location.href = "admin_theme/html/admin-index.html";
     } else {
       // Redirect to the user portal
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
       // Display a success message
       alert("User Login successfully!");
     }

@@ -1,0 +1,7 @@
+.box {
+    padding: 50px;
+    border-radius: 12px;
+    
+    transition: 0.25s;
+    box-shadow: 0 0 5px 1px rgba(53, 53, 53, 0.5);
+  }

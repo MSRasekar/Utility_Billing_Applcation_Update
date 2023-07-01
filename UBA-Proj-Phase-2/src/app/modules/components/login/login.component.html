@@ -1,0 +1,22 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="box col-md-6 offset-3 mt-5 mb-5">
+  <h1>Login</h1>
+  <p class="">Please enter your username and password!</p>
+  <div class="form-group">
+    <input type="text" class="form-control" formControlName="username" placeholder="Username">
+    <div *ngIf="isFieldInvalid('username')" class="error-message">
+      Please enter a valid username.
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" formControlName="password" placeholder="Password">
+    <div *ngIf="isFieldInvalid('password')" class="error-message">
+      Please enter a valid password.
+    </div>
+  </div>
+  <a class="forgot btn-lg" href="">Forgot password?</a><br>
+  <button type="submit" class="btn btn-lg mt-2">Login</button>
+  
+  <div class="text-center mt-4">
+    <p class="">Don't have a connection? <a routerLink="/signup" class="create btn">Get Connection Now</a></p>
+  </div>
+</form>

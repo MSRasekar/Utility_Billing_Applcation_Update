@@ -57,7 +57,7 @@ export class LoginComponent {
             // Navigate to home page
             this.router.navigate(['/user']);
           }
-  
+          alert("User Logged in Successfully");
           // Save user ID in sessionStorage after login
           sessionStorage.setItem('userid', loggedInUser.id.toString());
         } else {

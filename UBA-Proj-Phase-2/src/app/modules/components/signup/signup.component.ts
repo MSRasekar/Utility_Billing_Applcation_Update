@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email, this.domainValidator]],
       password: ['', [Validators.required, Validators.minLength(8), this.passwordValidator]],
       mobileNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      gender: ['', [Validators.required, Validators.pattern(/^(male|female)$/)]],
+      gender: ['', [Validators.required, Validators.pattern(/^(Male|Female)$/)]],
       state: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s]+$/)]],
       city: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s]+$/)]],
       address: ['', Validators.required],

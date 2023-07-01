@@ -1,0 +1,131 @@
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">All User Details</h1>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0">All Users List</h6>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="form">
+        <table class="table" id="dataTable" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Mobile Number</th>
+              <th>Date of Birth</th>
+              <th>Gender</th>
+              <th>Marital Status</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Connection Type</th>
+              <th>Required Load</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of dynamicData">
+              <td class="border-bottom-0">
+                <div *ngIf="!data.isEditing">{{ data.username }}</div>
+                <div *ngIf="data.isEditing">
+                  <input type="text" formControlName="username" class="form-control">
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div *ngIf="!data.isEditing">{{ data.email }}</div>
+                <div *ngIf="data.isEditing">
+                  <input type="email" formControlName="email" class="form-control">
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div *ngIf="!data.isEditing">{{ data.mobileNumber }}</div>
+                <div *ngIf="data.isEditing">
+                  <input type="tel" formControlName="mobileNumber" class="form-control">
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div *ngIf="!data.isEditing">{{ data.dob }}</div>
+                <div *ngIf="data.isEditing">
+                  <input type="date" formControlName="dob" class="form-control">
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div *ngIf="!data.isEditing">{{ data.gender }}</div>
+                <div *ngIf="data.isEditing">
+                  <select formControlName="gender" class="form-control">
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div *ngIf="!data.isEditing">{{ data.maritalStatus }}</div>
+                <div *ngIf="data.isEditing">
+                  <select formControlName="maritalStatus" class="form-control">
+                    <option value="" disabled selected>Select Marital Status</option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Widowed">Widowed</option>
+                  </select>
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div *ngIf="!data.isEditing">{{ data.address }}</div>
+                <div *ngIf="data.isEditing">
+                  <input type="text" formControlName="address" class="form-control">
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div *ngIf="!data.isEditing">{{ data.city }}</div>
+                <div *ngIf="data.isEditing">
+                  <input type="text" formControlName="city" class="form-control">
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div *ngIf="!data.isEditing">{{ data.state }}</div>
+                <div *ngIf="data.isEditing">
+                  <input type="text" formControlName="state" class="form-control">
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div *ngIf="!data.isEditing">{{ data.connectionType }}</div>
+                <div *ngIf="data.isEditing">
+                  <select formControlName="connectionType" class="form-control">
+                    <option value="" disabled selected>Select Connection Type</option>
+                    <option value="Residential">Residential</option>
+                    <option value="Commercial">Commercial</option>
+                    <option value="Industrial">Industrial</option>
+                  </select>
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div *ngIf="!data.isEditing">{{ data.requiredLoad }}</div>
+                <div *ngIf="data.isEditing">
+                  <input type="number" formControlName="requiredLoad" class="form-control">
+                </div>
+              </td>
+              <td class="border-bottom-0 d-flex">
+                <div *ngIf="data.isEditing" class="d-flex">
+                  <button (click)="saveChanges(data)" mat-raised-button color="accent"
+                    class="btn col-sm-6 mx-2">Save</button>
+                  <button (click)="toggleEditing(data)" class="btn btn-secondary col-sm-6">Cancel</button>
+                </div>
+                <div *ngIf="!data.isEditing" class="d-flex">
+                  <button (click)="toggleEditing(data)" mat-raised-button color="primary"
+                    class="btn mx-2 col-sm-6">Edit</button>
+                  <button (click)="deleteRow(data)" mat-raised-button color="warn"
+                    class="btn btn col-sm-6">Delete</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+
+    </div>
+  </div>
+</div>

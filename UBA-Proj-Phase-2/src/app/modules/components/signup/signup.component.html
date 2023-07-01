@@ -1,0 +1,119 @@
+
+<div class="container-fluid pt-5 pb-5">
+  <div class="card shadow col-md-10 offset-md-1">
+    <form [formGroup]="registrationForm" class="md-float-material form-material"  (ngSubmit)="onSubmit()">
+      <div class="row pb-4">
+        <div class="my-4">
+          <h2 class="text-center">New Connection Application Form</h2>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" formControlName="username" required>
+          <div *ngIf="isFieldInvalid('username')" class="text-danger">
+            Username should start with a letter and cannot contain special characters.
+          </div>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" formControlName="email" required>
+          <div *ngIf="isFieldInvalid('email')" class="text-danger">
+            Email is invalid or domain should contain at least two letters.
+          </div>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control " formControlName="password" required>
+          <div *ngIf="isFieldInvalid('password')" class="text-danger">
+            Password must contain at least 8 characters, including a lowercase letter, an uppercase letter, and a
+            number.
+          </div>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="mobileNumber">Mobile Number</label>
+          <input type="number" class="form-control" formControlName="mobileNumber" required>
+          <div *ngIf="isFieldInvalid('mobileNumber')" class="text-danger">
+            Mobile number should be 10 digits and cannot contain non-numeric characters.
+          </div>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="gender">Gender</label>
+          <select class="form-control" formControlName="gender" required>
+            <option disabled>Select gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+          <div *ngIf="isFieldInvalid('gender')" class="text-danger">
+            Gender is required.
+          </div>
+        </div>
+        <div class="col-sm-3 form-group">
+          <label for="state">State</label>
+          <input type="text" class="form-control" formControlName="state" required>
+          <div *ngIf="isFieldInvalid('state')" class="text-danger">
+            State should not be blank and cannot contain numbers.
+          </div>
+        </div>
+        <div class="col-sm-3 form-group">
+          <label for="city">City</label>
+          <input type="text" class="form-control" formControlName="city" required>
+          <div *ngIf="isFieldInvalid('city')" class="text-danger">
+            City should not be blank and cannot contain numbers.
+          </div>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="address">Permanent Address</label>
+          <input type="text" class="form-control" formControlName="address" required>
+          <div *ngIf="isFieldInvalid('address')" class="text-danger">
+            Permanent address is required.
+          </div>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="dob">Date Of Birth</label>
+          <input type="date" class="form-control" formControlName="dob" required>
+          <div *ngIf="isFieldInvalid('dob')" class="text-danger">
+            You must be at least 18 years old to apply.
+          </div>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="marital-status">Marital Status</label>
+          <select class="form-control" formControlName="maritalStatus" required>
+            <option value="" disabled>Select marital status</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Widowed">Widowed</option>
+          </select>
+          <div *ngIf="isFieldInvalid('maritalStatus')" class="text-danger">
+            Marital status is required.
+          </div>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="load">Required Load in Meter</label>
+          <select class="form-control" formControlName="load" required>
+            <option value="" disabled>Select load type</option>
+            <option value="Single Phase">Single Phase</option>
+            <option value="Three Phase">Three Phase</option>
+          </select>
+          <div *ngIf="isFieldInvalid('load')" class="text-danger">
+            Required load in meter is required.
+          </div>
+        </div>
+        <div class="col-sm-6 form-group">
+          <label for="connection-type">Connection Type</label>
+          <select class="form-control" formControlName="connectionType" required>
+            <option value="" disabled>Select connection type</option>
+            <option value="Commercial">Commercial</option>
+            <option value="Non-commercial">Non-Commercial</option>
+          </select>
+          <div *ngIf="isFieldInvalid('connectionType')" class="text-danger">
+            Connection type is required.
+          </div>
+        </div>
+        <div class="col-sm-12 form-group">
+          <button mat-raised-button color="primary" type="submit" class="btn btn-lg mt-3 col-md-4 offset-md-4 btn-submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

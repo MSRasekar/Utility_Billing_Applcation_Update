@@ -99,25 +99,44 @@
       "maritalStatus": "married",
       "requiredLoad": "single-phase",
       "connectionType": "non-commercial",
-      "applicationStatus": "new",
+      "applicationStatus": "INPROCESS",
       "role": "user",
       "isEditing": false
+    },
+    {
+      "username": "Vishal",
+      "email": "vishal@gmail.com",
+      "password": "Vishal123",
+      "mobileNumber": 9988776655,
+      "gender": "Male",
+      "state": "MH",
+      "city": "Mumbai",
+      "address": "Bandra",
+      "dob": "1998-12-12",
+      "maritalStatus": "Married",
+      "requiredLoad": "Three Phase",
+      "connectionType": "Non-commercial",
+      "role": "user",
+      "applicationStatus": "new",
+      "id": 7
     }
   ],
   "complaints": [
-     {
+    {
       "userid": 2,
       "description": "Meter Details Change Request",
       "date": "2023-06-30T20:35:28.777Z",
-      "status": "OPEN",
-      "id": 1
+      "status": "CLOSED",
+      "id": 1,
+      "isEditing": false
     },
     {
       "userid": 2,
       "description": "Power Cut Problem",
       "date": "2023-06-30T21:18:47.904Z",
       "status": "OPEN",
-      "id": 2
+      "id": 2,
+      "isEditing": false
     }
   ]
 }

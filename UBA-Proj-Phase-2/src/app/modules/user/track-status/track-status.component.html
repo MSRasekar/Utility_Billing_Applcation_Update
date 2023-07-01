@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-lg mt-5">
+          <div class="card-header">
+            <h2>Track New Connection Application Status</h2>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="applicationStatusForm" (ngSubmit)="getApplicationStatus()">
+              <div class="form-group mb-5">
+                <label for="mobileNumber" name="mobileNumber">Enter Registered Mobile Number</label>
+                <input type="number" class="form-control mt-3" id="mobileNumber" formControlName="mobileNumber" placeholder="Enter Mobile Number" autofocus>
+              </div>
+              <div class="d-grid">
+                <button mat-raised-button color="primary" class="btn" type="submit">Get Your Application Status</button>
+              </div>
+            </form>
+            <div class="mt-4 application-status" *ngIf="applicationStatus !== null">
+                <p class="h4">Your Application Status: {{ applicationStatus }}</p>
+              </div>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

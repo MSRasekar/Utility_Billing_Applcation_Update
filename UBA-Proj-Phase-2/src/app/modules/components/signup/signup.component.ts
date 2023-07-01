@@ -28,7 +28,7 @@ export class SignupComponent implements OnInit {
       address: ['', Validators.required],
       dob: ['', [Validators.required, this.minimumAgeValidator]],
       maritalStatus: ['', Validators.required],
-      load: ['', Validators.required],
+      requiredLoad: ['', Validators.required],
       connectionType: ['', Validators.required]
     });
   }

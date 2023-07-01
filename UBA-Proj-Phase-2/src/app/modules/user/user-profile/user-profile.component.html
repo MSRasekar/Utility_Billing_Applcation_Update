@@ -1,0 +1,136 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+  <section style="background-color: #eee">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4"> <span class="h5">User Profile</span>
+
+          </nav>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img
+                src="https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg"
+                alt="avatar" class="rounded-circle img-fluid" style="width: 150px" />
+              <h5 class="my-5" id="profilePhotoName"></h5>
+              <br />
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="firstName">
+                    {{ userProfile.username }}
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="emailDivTest">
+                    {{ userProfile.email }}
+                  </p>
+                </div>
+              </div>
+              <hr/>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Mobile Number</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="phoneNumber">
+                    {{ userProfile.mobileNumber }}
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Date of Birth</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="dob">
+                    {{ userProfile.dob }}
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Gender</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="gender">
+                    {{ userProfile.gender }}
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">State</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="state">
+                    {{ userProfile.state }}
+                  </p>
+                </div>
+              </div>
+              <!-- Add similar code for the remaining fields -->
+              
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">City</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="city">
+                    {{ userProfile.city }}
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Permanent Address</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="permAddress">
+                    {{ userProfile.address }}
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Marital Status</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="maritalStatus">
+                    {{ userProfile.maritalStatus }}
+                  </p>
+                </div>
+              </div>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

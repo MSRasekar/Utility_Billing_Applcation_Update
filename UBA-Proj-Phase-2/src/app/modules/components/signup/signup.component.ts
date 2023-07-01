@@ -89,7 +89,7 @@ export class SignupComponent implements OnInit {
   }
 
   passwordValidator(control: AbstractControl) {
-    if (control && control.value) { // Add null and value check
+    if (control && control.value) { 
       const value = control.value;
       const hasLowercase = /[a-z]/.test(value);
       const hasUppercase = /[A-Z]/.test(value);

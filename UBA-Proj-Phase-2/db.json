@@ -1,0 +1,123 @@
+{
+  "userDetails": [
+    {
+      "id": 1,
+      "username": "Manoj",
+      "email": "Manoj@gmail.com",
+      "password": "Akl12345",
+      "mobileNumber": 1234567890,
+      "gender": "male",
+      "state": "MH",
+      "city": "CD",
+      "address": "Baner",
+      "dob": "1998-11-22",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "username": "Mohan",
+      "email": "john@example.com",
+      "password": "Pass123",
+      "mobileNumber": 9876543210,
+      "gender": "male",
+      "state": "CA",
+      "city": "AB",
+      "address": "XYZ Street",
+      "dob": "1990-05-10",
+      "maritalStatus": "married",
+      "requiredLoad": "single-phase",
+      "connectionType": "non-commercial",
+      "applicationStatus": "INPROCESS",
+      "role": "user",
+      "isEditing": false
+    },
+    {
+      "id": 3,
+      "username": "JaneDoe",
+      "email": "jane@example.com",
+      "password": "SecurePass123",
+      "mobileNumber": 8765432109,
+      "gender": "female",
+      "state": "NY",
+      "city": "EF",
+      "address": "ABC Avenue",
+      "dob": "1995-08-15",
+      "maritalStatus": "single",
+      "requiredLoad": "three-phase",
+      "connectionType": "residential",
+      "applicationStatus": "SEND TO NEXT STAGE",
+      "role": "user",
+      "isEditing": false
+    },
+    {
+      "id": 4,
+      "username": "AlexSmith",
+      "email": "alex@example.com",
+      "password": "Passw0rd!",
+      "mobileNumber": 7654321098,
+      "gender": "male",
+      "state": "TX",
+      "city": "GH",
+      "address": "123 Street",
+      "dob": "1985-12-01",
+      "maritalStatus": "divorced",
+      "requiredLoad": "single-phase",
+      "connectionType": "non-commercial",
+      "applicationStatus": "new",
+      "role": "user",
+      "isEditing": false
+    },
+    {
+      "id": 5,
+      "username": "EmilyJones",
+      "email": "emily@example.com",
+      "password": "Password123",
+      "mobileNumber": 6543210987,
+      "gender": "female",
+      "state": "FL",
+      "city": "IJ",
+      "address": "456 Avenue",
+      "dob": "1992-07-05",
+      "maritalStatus": "single",
+      "requiredLoad": "three-phase",
+      "connectionType": "residential",
+      "applicationStatus": "new",
+      "role": "user",
+      "isEditing": false
+    },
+    {
+      "id": 6,
+      "username": "RobertJohnson",
+      "email": "robert@example.com",
+      "password": "SecurePassword123",
+      "mobileNumber": 5432109876,
+      "gender": "male",
+      "state": "CA",
+      "city": "KL",
+      "address": "789 Street",
+      "dob": "1988-03-20",
+      "maritalStatus": "married",
+      "requiredLoad": "single-phase",
+      "connectionType": "non-commercial",
+      "applicationStatus": "new",
+      "role": "user",
+      "isEditing": false
+    }
+  ],
+  "complaints": [
+     {
+      "userid": 2,
+      "description": "Meter Details Change Request",
+      "date": "2023-06-30T20:35:28.777Z",
+      "status": "OPEN",
+      "id": 1
+    },
+    {
+      "userid": 2,
+      "description": "Power Cut Problem",
+      "date": "2023-06-30T21:18:47.904Z",
+      "status": "OPEN",
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+
+
+.admin-sidebar {
+  background-color: #3f51b5;
+  min-height: 75vh;
+}
+
+.col-md-9,
+.col-md-2 {
+  padding: 0;
+}
+
+.admin-content {
+  flex: 1;
+}

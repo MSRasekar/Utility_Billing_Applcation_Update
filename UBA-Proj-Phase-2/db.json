@@ -134,9 +134,23 @@
       "userid": 2,
       "description": "Power Cut Problem",
       "date": "2023-06-30T21:18:47.904Z",
-      "status": "OPEN",
+      "status": "CLOSED",
       "id": 2,
       "isEditing": false
+    },
+    {
+      "userid": 2,
+      "description": "Voltage Fluctuation",
+      "date": "2023-07-01T17:24:03.068Z",
+      "status": "OPEN",
+      "id": 3
+    },
+    {
+      "userid": 2,
+      "description": "Voltage Fluctuation",
+      "date": "2023-07-01T17:34:54.913Z",
+      "status": "OPEN",
+      "id": 4
     }
   ]
 }

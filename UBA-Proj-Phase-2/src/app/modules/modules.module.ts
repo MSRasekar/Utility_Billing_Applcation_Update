@@ -14,13 +14,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
-import { AdminModule } from './admin/admin.module';
 import { UserModule } from './user/user.module';
+import { AdminModule } from './admin/admin.module';
 import { MatButtonModule } from '@angular/material/button';
 
 
+
 @NgModule({
-  declarations: [ 
+  declarations: [
     HomeComponent,
     AboutComponent,
     ContactComponent,
@@ -35,12 +36,12 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     ModulesRoutingModule,
     AppRoutingModule,
-    ReactiveFormsModule,MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, NgIf,
+    ReactiveFormsModule, MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, NgIf,
     AdminModule,
     UserModule,
-    MatButtonModule
-    
+    MatButtonModule,
+
   ],
-  exports:[NavbarComponent, FooterComponent]
+  exports: [NavbarComponent, FooterComponent]
 })
 export class ModulesModule { }

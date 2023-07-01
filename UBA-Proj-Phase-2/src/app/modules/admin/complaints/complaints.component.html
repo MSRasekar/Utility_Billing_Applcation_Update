@@ -1,0 +1,84 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Complaints Details</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="form-group">
+                <label for="categoryFilter">Filter by Category:</label>
+                <select class="form-control" id="categoryFilter" [(ngModel)]="selectedCategory"
+                    (change)="filterComplaints()">
+                    <option value="">All Categories</option>
+                    <option value="Power Cut Problem">Power Cut Issue</option>
+                    <option value="Voltage drop Problem">Voltage Fluctuation </option>
+                    <option value="Meter Details Change Request">
+                        Meter Details Change Request
+                    </option>
+                </select>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table text-nowrap mb-0 align-middle">
+                    <thead class="text-dark fs-4">
+                        <tr>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">UserId</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Description</h6>
+                            </th>
+
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Date</h6>
+                            </th>
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Status</h6>
+                            </th>
+
+                            <th class="border-bottom-0">
+                                <h6 class="fw-semibold mb-0">Actions</h6>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of filteredData">
+                            <td class="border-bottom-0">
+                                <div>{{ data.userid }}</div>
+                            </td>
+                            <td class="border-bottom-0">
+                                <div>{{ data.description }}</div>
+                            </td>
+                            <td class="border-bottom-0">
+                                <div>{{ data.date }}</div>
+                            </td>
+                            <td class="border-bottom-0">
+                                <div *ngIf="!data.isEditing">{{ data.status }}</div>
+                                <div *ngIf="data.isEditing">
+                                    <select [(ngModel)]="data.status" class="form-control dropdown">
+                                        <option value="OPEN">OPEN</option>
+                                        <option value="CLOSED">CLOSED</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td class="border-bottom-0">
+                                <div class="d-flex">
+                                    <button *ngIf="!data.isEditing" mat-raised-button color="primary" class="btn btn-sm "
+                                        (click)="toggleEditing(data)">
+                                        Change Status
+                                    </button>
+                                    <button *ngIf="data.isEditing" mat-raised-button color="accent" class="btn btn-sm col-md-7"
+                                        (click)="saveChanges(data)">
+                                        Save
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.container-fluid -->

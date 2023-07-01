@@ -23,6 +23,7 @@
         <li class="nav-item">
           <a mat-raised-button color="desable" class="mx-3" routerLink="/steps" routerLinkActive="active">Steps</a>
         </li>
+        <!-- active after login -->
         <li *ngIf="!loginService.isLoggedIn()" class="nav-item">
           <a mat-raised-button color="primary" class="mx-3" routerLink="/login" routerLinkActive="active">Login</a>
         </li>

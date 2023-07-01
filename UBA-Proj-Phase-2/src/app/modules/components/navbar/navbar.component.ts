@@ -12,7 +12,7 @@ export class NavbarComponent {
   logout(): void {
 
     this.loginService.logout();
-    // Remove user id from session storage
+    // Remove user id from session storage on logout
     sessionStorage.removeItem('userid');
   }
 }

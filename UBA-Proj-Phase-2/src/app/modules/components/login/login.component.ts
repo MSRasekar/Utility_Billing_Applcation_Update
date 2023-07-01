@@ -58,7 +58,7 @@ export class LoginComponent {
             this.router.navigate(['/user']);
           }
   
-          // Save user ID in sessionStorage
+          // Save user ID in sessionStorage after login
           sessionStorage.setItem('userid', loggedInUser.id.toString());
         } else {
           // Show error message or perform other actions if login fails

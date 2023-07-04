@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'user',
     component:UserSideBarComponent,
-    
+    canActivate:[AuthGuard],
     children: [
       { path: '', component: HomeComponent },
       { path: 'track-status', component: TrackStatusComponent },

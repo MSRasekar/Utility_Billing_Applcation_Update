@@ -1,41 +1,91 @@
-<!-- <div class="container">
-    <h2>Bill Information</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Bill ID</th>
-          <th>Amount</th>
-          <th>Billing Unit</th>
-          <th>Date</th>
-          <th>Payment Status</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let bill of bills">
-          <td>{{ bill.id }}</td>
-          <td>{{ bill.amount }}</td>
-          <td>{{ bill.billingUnit }}</td>
-          <td>{{ bill.date | date }}</td>
-          <td>{{ bill.isPaid ? 'Paid' : 'Unpaid' }}</td>
-          <td>
-            <button
-              *ngIf="!bill.isPaid"
-              class="btn btn-primary"
-              (click)="payBill(bill.id)"
-            >
-              Pay Bill
-            </button>
-            <button
-              *ngIf="bill.isPaid"
-              class="btn btn-success"
-              disabled
-            >
-              Paid
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-   -->
+<!-- Begin Page Content -->
+<div class="container-fluid mt-5">
+  <section style="background-color: #eee">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col">
+          <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+            <span class="h5">Electricity Bill</span>
+          </nav>
+        </div>
+      </div>
+      <div *ngIf="bills.length === 0">
+        <p>No bills available.</p>
+      </div>
+      <div *ngFor="let bill of bills" class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Bill ID</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="billid">
+                    {{ bill.id }}
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">User ID</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="userid">
+                    {{ bill.userId }}
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Bill Amount</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="amount">
+                    {{ bill.amount }}
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Bill Generate Date</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="date">
+                    {{ bill.date }}
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Paid Status</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0" id="status">
+                    <span *ngIf="bill.isPaid">Paid</span>
+                    <span *ngIf="!bill.isPaid">Pending</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            *ngIf="!bill.isPaid"
+            (click)="payBill(bill.id)"
+            [disabled]="bill.isPaid"
+            mat-raised-button
+            color="primary"
+            class="btn col-md-6"
+          >
+            Pay Bill
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

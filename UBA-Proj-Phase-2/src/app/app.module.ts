@@ -13,10 +13,12 @@ import { AuthGuard } from './core/auth.guard';
 import { ToastService, AngularToastifyModule } from 'angular-toastify'; 
 import { NgIf } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
+import { AdminModule } from './modules/admin/admin.module';
 
 @NgModule({
   declarations: [
-    AppComponent,    
+    AppComponent,
+    
   ],
   imports: [
     BrowserModule,

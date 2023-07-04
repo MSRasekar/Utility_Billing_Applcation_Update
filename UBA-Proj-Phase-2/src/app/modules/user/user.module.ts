@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import { RaiseComplaintComponent } from './raise-complaint/raise-complaint.component';
+import { BillInfoComponent } from './bill-info/bill-info.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { RaiseComplaintComponent } from './raise-complaint/raise-complaint.compo
     UserProfileComponent,
     MeterDetailsComponent,
     UserSideBarComponent,
-    RaiseComplaintComponent
+    RaiseComplaintComponent,
+    BillInfoComponent
   ],
   imports: [
     CommonModule,

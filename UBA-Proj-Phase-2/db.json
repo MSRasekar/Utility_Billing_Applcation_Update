@@ -152,5 +152,55 @@
       "status": "OPEN",
       "id": 4
     }
+  ],
+  "bills": [
+    {
+      "userId": "4",
+      "amount": "800",
+      "billingUnit": "70",
+      "date": "2023-07-03T12:40:08.430Z",
+      "id": 1,
+      "isPaid": false
+    },
+    {
+      "userId": "3",
+      "amount": "900",
+      "billingUnit": "80",
+      "date": "2023-07-03T12:40:54.640Z",
+      "id": 2,
+      "isPaid": false
+    },
+    {
+      "userId": "3",
+      "amount": "500",
+      "billingUnit": "22",
+      "date": "2023-07-03T13:25:02.295Z",
+      "id": 3,
+      "isPaid": true
+    },
+    {
+      "userId": "2",
+      "amount": "450",
+      "billingUnit": "32",
+      "date": "2023-07-03T13:41:15.868Z",
+      "isPaid": false,
+      "id": 4
+    },
+    {
+      "userId": "5",
+      "amount": "45",
+      "billingUnit": "345",
+      "date": "2023-07-03T13:50:34.240Z",
+      "isPaid": false,
+      "id": 5
+    },
+    {
+      "userId": "6",
+      "amount": "56",
+      "billingUnit": "345",
+      "date": "2023-07-03T14:46:35.915Z",
+      "isPaid": false,
+      "id": 6
+    }
   ]
 }

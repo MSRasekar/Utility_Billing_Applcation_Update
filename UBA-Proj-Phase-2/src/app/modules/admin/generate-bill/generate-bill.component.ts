@@ -10,21 +10,20 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class GenerateBillComponent implements OnInit {
   generateBillForm!: FormGroup;
-  userList: any[] =[]; // Array to store the retrieved user list
+  userList: any[] = [];
   public isDuplicateEntry: any = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private billService: BillGenerationService,
-    private userService: UserService // Inject the user service
-  ) {}
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
     this.generateBillForm = this.formBuilder.group({
       userId: ['', Validators.required],
-      amount: ['', Validators.required],
-      billingUnit: ['', Validators.required] // Add a form control for billing unit
-      // Add more form controls as needed for other bill details
+      billingUnit: ['', Validators.required],
+      amount: [] // Initialize amount field as disabled with a default value of 0
     });
 
     this.userService.getUserList().subscribe((users) => {
@@ -32,41 +31,42 @@ export class GenerateBillComponent implements OnInit {
     });
   }
 
+  calculateAmount() {
+    const billingUnit = this.generateBillForm.value.billingUnit;
+    const amount = billingUnit * 8.5; // Replace with your actual calculation logic
+    this.generateBillForm.patchValue({ amount }); // Update the amount field in the form
+  }
+
   onSubmit() {
     if (this.generateBillForm.invalid) {
-      // Perform necessary error handling or validation feedback
       return;
     }
-  
+
     const userId = this.generateBillForm.value.userId;
-    const amount = this.generateBillForm.value.amount;
     const billingUnit = this.generateBillForm.value.billingUnit;
-    // Retrieve other form values as needed for other bill details
-  
-    const currentDate = new Date(); // Get the current date
-    const formattedDate = currentDate.toISOString(); // Format the date as needed
-  
+    const currentDate = new Date();
+    const formattedDate = currentDate.toISOString();
+    
+
     const billData = {
       userId,
-      amount,
+      amount: this.generateBillForm.value.amount, // Get the amount from the form field
       billingUnit,
       date: formattedDate,
-      isPaid: false // Set the initial isPaid status as false
-      // Include other bill details as needed
+      isPaid: false
     };
-  
-    // Check for duplicate bill entry for the user
-    this.billService.checkDuplicateBillEntry(userId)
+
+
+    this.billService
+      .checkDuplicateBillEntry(userId)
       .then((isDuplicateEntry) => {
         if (isDuplicateEntry) {
-          // Show error message for duplicate entry
           alert(`Bill already generated for user ${userId}`);
         } else {
-          // Generate the bill
-          this.billService.generateElectricityBill(billData)
+          this.billService
+            .generateElectricityBill(billData)
             .then(() => {
-              // Bill generated successfully, perform necessary actions
-              alert("Bill Generated Successfully");
+              alert('Bill Generated Successfully');
               console.log('Electricity bill generated successfully');
             })
             .catch((error) => {
@@ -78,6 +78,4 @@ export class GenerateBillComponent implements OnInit {
         console.error('An error occurred while checking for duplicate bill entry:', error);
       });
   }
-  
-  
 }

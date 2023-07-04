@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { GenerateBillComponent } from './generate-bill/generate-bill.component';
+import { ViewBillsComponent } from './view-bills/view-bills.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { GenerateBillComponent } from './generate-bill/generate-bill.component';
     SidebarComponent,
     AdminLayoutComponent,
     UserlistComponent,
-    GenerateBillComponent
+    GenerateBillComponent,
+    ViewBillsComponent
     
   ],
   imports: [

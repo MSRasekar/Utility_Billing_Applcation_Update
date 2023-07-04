@@ -7,6 +7,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MeterDetailsComponent } from './meter-details/meter-details.component';
 import { UserSideBarComponent } from './user-side-bar/user-side-bar.component';
 import { RaiseComplaintComponent } from './raise-complaint/raise-complaint.component';
+import { BillInfoComponent } from './bill-info/bill-info.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       { path: 'user-profile', component: UserProfileComponent },
       { path: 'meter-details', component: MeterDetailsComponent },
       { path: 'raise-complaint', component: RaiseComplaintComponent },
+      { path: 'bill-info', component: BillInfoComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' } // Default route
     ]
   }

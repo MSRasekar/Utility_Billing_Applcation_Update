@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate {
     if (this.authService.isLoggedIn()) {
       return Promise.resolve(true);
     } else {
+      sessionStorage.removeItem('userid');
       // Redirect to the login page if not authenticated
       this.router.navigate(['/login']);
       return Promise.resolve(false);

@@ -15,4 +15,12 @@ export class NavbarComponent {
     // Remove user id from session storage on logout
     sessionStorage.removeItem('userid');
   }
+
+  getDashboardLink(): string {
+    if (this.loginService.isAdmin()) {
+      return '/admin';
+    } else {
+      return '/user';
+    }
+  }
 }

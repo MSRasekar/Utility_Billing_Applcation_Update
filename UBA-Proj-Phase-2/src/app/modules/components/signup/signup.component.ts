@@ -33,6 +33,8 @@ export class SignupComponent implements OnInit {
     });
   }
 
+  
+
   onSubmit() {
     if (this.registrationForm.valid) {
       // Get the form data and assign it to a variable (e.g., userData)
@@ -77,9 +79,10 @@ export class SignupComponent implements OnInit {
   }
 
   isFieldInvalid(fieldName: string) {
-    const control = this.registrationForm.get(fieldName)!;
-    return control.invalid && control.touched;
+    const control = this.registrationForm.get(fieldName);
+    return control && control.invalid && control.touched;
   }
+  
 
   startWithLetterValidator(control: AbstractControl) {
     if (control && !/^[A-Za-z]/.test(control.value)) {

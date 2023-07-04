@@ -1,0 +1,41 @@
+<!-- <div class="container">
+    <h2>Bill Information</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Bill ID</th>
+          <th>Amount</th>
+          <th>Billing Unit</th>
+          <th>Date</th>
+          <th>Payment Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bill of bills">
+          <td>{{ bill.id }}</td>
+          <td>{{ bill.amount }}</td>
+          <td>{{ bill.billingUnit }}</td>
+          <td>{{ bill.date | date }}</td>
+          <td>{{ bill.isPaid ? 'Paid' : 'Unpaid' }}</td>
+          <td>
+            <button
+              *ngIf="!bill.isPaid"
+              class="btn btn-primary"
+              (click)="payBill(bill.id)"
+            >
+              Pay Bill
+            </button>
+            <button
+              *ngIf="bill.isPaid"
+              class="btn btn-success"
+              disabled
+            >
+              Paid
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+   -->

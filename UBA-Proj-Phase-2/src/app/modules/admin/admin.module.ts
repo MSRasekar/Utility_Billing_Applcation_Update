@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { GenerateBillComponent } from './generate-bill/generate-bill.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     ComplaintsComponent,
     SidebarComponent,
     AdminLayoutComponent,
-    UserlistComponent
+    UserlistComponent,
+    GenerateBillComponent
     
   ],
   imports: [

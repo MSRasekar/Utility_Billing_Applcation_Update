@@ -1,0 +1,36 @@
+﻿@model UtilityBillingApplicationMVC.DTOs.NavbarViewModel
+
+<!-- Navbar Start -->
+
+<nav class="navbar navbar-expand-lg bg-light navbar-light shadow sticky-top p-0">
+    <a asp-controller="Home" asp-action="Index" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+        <h2 class="m-0 text-warning">
+            <img src="https://cdn.iconscout.com/icon/free/png-256/free-electricity-bill-1817232-1538101.png" alt=""
+                 height="50" width="50">Utility Billing Application
+        </h2>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-4 p-lg-0">
+            <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">Home</a>
+            <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">About</a>
+            <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">Services</a>
+            <a asp-controller="Home" asp-action="Index" class="nav-item nav-link">Contact</a>
+
+            @if (!Model.IsLoggedIn)
+            {
+                <a asp-controller="Users" asp-action="Login" class="nav-item nav-link text-primary">Login</a>
+                <a asp-controller="Users" asp-action="Signup" class="nav-item nav-link text-primary">Sign Up</a>
+            }
+            else
+            {
+                <a asp-controller="Users" asp-action="Logout" class="nav-item nav-link text-danger">Logout</a>
+            }
+        </div>
+    </div>
+</nav>
+
+
+<!-- Navbar End -->

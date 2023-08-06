@@ -30,7 +30,7 @@ namespace UtilityBillingApplicationMVC.Controllers
             {
                 IsLoggedIn = isLoggedIn,
                 UserRole = userRole
-                // Add other properties as needed
+              
             };
 
             return View(navbarViewModel);

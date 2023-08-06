@@ -1,0 +1,153 @@
+﻿@model UtilityBillingApplicationMVC.DTOs.NavbarViewModel
+@{
+
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-9 py-5">
+            <h3 class="text-bold my-2 text-primary text-center">
+                Apply For New Connection
+            </h3>
+            <form asp-controller="Users" asp-action="SignUp" method="post" style="border: 1px solid #ccc; padding: 20px; border-radius: 5px;" novalidate>
+                <div class="row">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="col-md-6">
+                        <div class="form-group first">
+                            <label for="Username" style="color: black">User Name</label>
+                            <input type="text" asp-for="SignUp.Username" class="form-control" />
+                            <span asp-validation-for="SignUp.Username" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group first">
+                            <label for="Password">Password</label>
+                            <input type="password" asp-for="SignUp.Password" class="form-control" />
+                            <span asp-validation-for="SignUp.Password" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group first">
+                            <label for="Email">Email Address</label>
+                            <input type="email" asp-for="SignUp.Email" class="form-control" />
+                            <span asp-validation-for="SignUp.Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group first">
+                            <label for="Gender">Gender</label>
+                            <select asp-for="SignUp.Gender" class="form-control">
+                                <option value="">Select gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span asp-validation-for="SignUp.Gender" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group first">
+                            <label for="State">State</label>
+                            <input type="text" asp-for="SignUp.State" class="form-control" />
+                            <span asp-validation-for="SignUp.State" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group first">
+                            <label for="City">City</label>
+                            <input type="text" asp-for="SignUp.City" class="form-control" required />
+                            <span asp-validation-for="SignUp.City" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group first">
+                            <label for="DateOfBirth">Date Of Birth</label>
+                            <input type="date" asp-for="SignUp.DateOfBirth" class="form-control" required />
+                            <span asp-validation-for="SignUp.DateOfBirth" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group first">
+                            <label for="PermanentAddress">Permanent Address</label>
+                            <input type="text" asp-for="SignUp.PermanentAddress" class="form-control" required />
+                            <span asp-validation-for="SignUp.PermanentAddress" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group first">
+                            <label for="MaritalStatus">Marital Status</label>
+                            <select asp-for="SignUp.MaritalStatus" class="form-control" required>
+                                <option value="">Select marital status</option>
+                                <option value="single">Single</option>
+                                <option value="married">Married</option>
+                                <option value="divorced">Divorced</option>
+                                <option value="widowed">Widowed</option>
+                            </select>
+                            <span asp-validation-for="SignUp.MaritalStatus" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group first">
+                            <label for="PhoneNumber">Phone Number</label>
+                            <input type="text" asp-for="SignUp.PhoneNumber" class="form-control" required />
+                            <span asp-validation-for="SignUp.PhoneNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group last mb-3">
+                            <label for="RequiredLoad">Required Load</label>
+                            <select asp-for="SignUp.RequiredLoad" class="form-control">
+                                <option value="">Select load</option>
+                                <option value="Single Phase">Single Phase</option>
+                                <option value="Three Phase">Three Phase</option>
+                            </select>
+                            <span asp-validation-for="SignUp.RequiredLoad" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group last mb-3">
+                            <label for="ConnectionType">Connection Type</label>
+                            <select asp-for="SignUp.ConnectionType" class="form-control">
+                                <option value="">Select Type</option>
+                                <option value="Commercial">Commercial</option>
+                                <option value="Non Commercial">Non Commercial</option>
+                            </select>
+                            <span asp-validation-for="SignUp.ConnectionType" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-lg text-center px-5 btn-success">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

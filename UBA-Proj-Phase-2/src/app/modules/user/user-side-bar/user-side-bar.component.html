@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 user-sidebar">
+      <ul class="nav flex-column">
+
+        <li class="nav-item">
+          <button mat-flat-button color="" class="col-9 m-4 mt-5" routerLink="/user/user-profile"
+            routerLinkActive="active">User Profile</button>
+        </li>
+        <li class="nav-item">
+          <a mat-flat-button color="" class="col-9 m-4" routerLink="/user/track-status" routerLinkActive="active">Track
+            Status</a>
+        </li>
+        <li class="nav-item">
+          <a mat-flat-button color="" class="col-9 m-4" routerLink="/user/meter-details" routerLinkActive="active">Meter
+            Details</a>
+        </li>
+        <li class="nav-item">
+          <a mat-flat-button color="" class="col-9 m-4" routerLink="/user/raise-complaint"
+            routerLinkActive="active">Raise Complaints</a>
+        </li>
+        <li class="nav-item">
+          <a mat-flat-button color="" class="col-9 m-4" routerLink="/user/bill-info"
+            routerLinkActive="active">View Bill</a>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-9 user-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>

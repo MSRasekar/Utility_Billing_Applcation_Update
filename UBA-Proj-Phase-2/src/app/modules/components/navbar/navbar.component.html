@@ -1,37 +1,113 @@
 <nav class="navbar navbar-expand-lg nav-bg">
   <div class="container-fluid">
     <a class="navbar-brand" routerLink="/">
-      <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/lightning-bolt--v1.png"
-        alt="lightning-bolt--v1" />
+      <img
+        width="50"
+        height="50"
+        src="https://img.icons8.com/ios-filled/50/lightning-bolt--v1.png"
+        alt="lightning-bolt--v1"
+      />
       Utility Billing Application
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto"> <!-- Modified line -->
-        <li class="nav-item ml-4">
-          <a mat-raised-button color="desable" class="mx-3" routerLink="/" routerLinkActive="active">Home</a>
+    <div
+      class="collapse navbar-collapse justify-content-end"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav ml-auto">
+        <!-- Modified line -->
+        <li class="nav-item my-2">
+          <a
+            mat-raised-button
+            color="desable"
+            class="mx-3"
+            routerLink="/"
+            routerLinkActive="active"
+            >Home</a
+          >
         </li>
-        <li class="nav-item">
-          <a mat-raised-button color="desable" class="mx-3" routerLink="/about" routerLinkActive="active">About</a>
+        <li class="nav-item my-2">
+          <a
+            mat-raised-button
+            color="desable"
+            class="mx-3"
+            routerLink="/about"
+            routerLinkActive="active"
+            >About</a
+          >
         </li>
-        <li class="nav-item">
-          <a mat-raised-button color="desable" class="mx-3" routerLink="/contact" routerLinkActive="active">Contact</a>
+        <li class="nav-item my-2">
+          <a
+            mat-raised-button
+            color="desable"
+            class="mx-3"
+            routerLink="/contact"
+            routerLinkActive="active"
+            >Contact</a
+          >
         </li>
-        <li class="nav-item">
-          <a mat-raised-button color="desable" class="mx-3" routerLink="/steps" routerLinkActive="active">Steps</a>
+        <li class="nav-item my-2">
+          <a
+            mat-raised-button
+            color="desable"
+            class="mx-3"
+            routerLink="/steps"
+            routerLinkActive="active"
+            >Steps</a
+          >
         </li>
-        <li *ngIf="!loginService.isLoggedIn()" class="nav-item">
-          <a mat-raised-button color="primary" class="mx-3" routerLink="/login" routerLinkActive="active">Login</a>
+        <!-- active after login -->
+        <li *ngIf="!loginService.isLoggedIn()" class="nav-item my-2">
+          <a
+            mat-raised-button
+            color="primary"
+            class="mx-3"
+            routerLink="/login"
+            routerLinkActive="active"
+            >Login</a
+          >
         </li>
-        <li *ngIf="!loginService.isLoggedIn()" class="nav-item">
-          <a mat-raised-button color="primary" class="mx-3" routerLink="/signup" routerLinkActive="active">Signup</a>
+        <li *ngIf="!loginService.isLoggedIn()" class="nav-item my-2">
+          <a
+            mat-raised-button
+            color="primary"
+            class="mx-3"
+            routerLink="/signup"
+            routerLinkActive="active"
+            >Signup</a
+          >
         </li>
-        
-        <li *ngIf="loginService.isLoggedIn()" class="nav-item">
-          <a mat-raised-button color="accent" class="mx-3" routerLinkActive="active" (click)="logout()">Logout</a>
+
+        <li *ngIf="loginService.isLoggedIn()" class="nav-item my-2">
+          <a
+            mat-raised-button
+            color="primary"
+            class="mx-3"
+            [routerLink]="getDashboardLink()"
+            routerLinkActive="active"
+            >Dashboard</a
+          >
+        </li>
+
+        <li *ngIf="loginService.isLoggedIn()" class="nav-item my-2">
+          <a
+            mat-raised-button
+            color="accent"
+            class="mx-3"
+            routerLinkActive="active"
+            (click)="logout()"
+            >Logout</a
+          >
         </li>
       </ul>
     </div>

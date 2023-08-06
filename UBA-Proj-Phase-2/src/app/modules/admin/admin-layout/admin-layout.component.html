@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 admin-sidebar">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a mat-flat-button color="" class="col-9 m-4 mt-5" routerLink="/admin/dashboard"
+                        routerLinkActive="active">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a mat-flat-button color="" class="col-9 m-4" routerLink="/admin/userlist"
+                        routerLinkActive="active">Users List</a>
+                </li>
+                <li class="nav-item">
+                    <a mat-flat-button color="" class="col-9 m-4" routerLink="/admin/complaints"
+                        routerLinkActive="active">Complaints</a>
+                </li>
+                <li class="nav-item">
+                    <a mat-flat-button color="" class="col-9 m-4" routerLink="/admin/application-list"
+                        routerLinkActive="active">Applications List</a>
+                </li>
+                <li class="nav-item">
+                    <a mat-flat-button color="" class="col-9 m-4" routerLink="/admin/generate-bill"
+                        routerLinkActive="active">Generate Bill</a>
+                </li>
+                <li class="nav-item">
+                    <a mat-flat-button color="" class="col-9 m-4" routerLink="/admin/view-bills"
+                        routerLinkActive="active">All Bill Status</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9 admin-content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

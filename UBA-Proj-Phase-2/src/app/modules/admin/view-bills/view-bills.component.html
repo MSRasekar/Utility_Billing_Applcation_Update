@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Bill Details</h1>
+  
+    <!-- DataTales Example -->
+    <div class="card shadow">
+      <div class="card-header py-3">
+        <h6 class="m-0">All Bill List</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive mt-4">
+          <table class="table text-nowrap mb-0 align-middle">
+            <thead class="text-dark fs-4">
+              <tr>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Bill ID</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">User ID</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Date</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Amount</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Status</h6>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let bill of bills">
+                <td class="border-bottom-0">
+                  <div>{{ bill.id }}</div>
+                </td>
+                <td class="border-bottom-0">
+                  <div>{{ bill.userId }}</div>
+                </td>
+                <td class="border-bottom-0">
+                  <div>{{ bill.date }}</div>
+                </td>
+                <td class="border-bottom-0">
+                  <div>{{ bill.amount }}</div>
+                </td>
+                <td class="border-bottom-0">
+                  <div>{{ bill.isPaid ? 'Paid' : 'Unpaid' }}</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

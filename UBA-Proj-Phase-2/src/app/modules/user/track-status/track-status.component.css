@@ -1,0 +1,21 @@
+.card-body {
+    position: relative;
+  }
+  
+  .application-status {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .application-status p {
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+  

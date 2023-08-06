@@ -1,4 +1,4 @@
-
+<!-- singup form -->
 <div class="container-fluid pt-5 pb-5">
   <div class="card shadow col-md-10 offset-md-1">
     <form [formGroup]="registrationForm" class="md-float-material form-material"  (ngSubmit)="onSubmit()">
@@ -90,7 +90,7 @@
         </div>
         <div class="col-sm-6 form-group">
           <label for="load">Required Load in Meter</label>
-          <select class="form-control" formControlName="load" required>
+          <select class="form-control" formControlName="requiredLoad" required>
             <option value="" disabled>Select load type</option>
             <option value="Single Phase">Single Phase</option>
             <option value="Three Phase">Three Phase</option>

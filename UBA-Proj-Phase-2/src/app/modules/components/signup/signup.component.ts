@@ -22,16 +22,18 @@ export class SignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email, this.domainValidator]],
       password: ['', [Validators.required, Validators.minLength(8), this.passwordValidator]],
       mobileNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      gender: ['', [Validators.required, Validators.pattern(/^(male|female)$/)]],
+      gender: ['', [Validators.required, Validators.pattern(/^(Male|Female)$/)]],
       state: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s]+$/)]],
       city: ['', [Validators.required, Validators.pattern(/^[A-Za-z\s]+$/)]],
       address: ['', Validators.required],
       dob: ['', [Validators.required, this.minimumAgeValidator]],
       maritalStatus: ['', Validators.required],
-      load: ['', Validators.required],
+      requiredLoad: ['', Validators.required],
       connectionType: ['', Validators.required]
     });
   }
+
+  
 
   onSubmit() {
     if (this.registrationForm.valid) {
@@ -77,9 +79,10 @@ export class SignupComponent implements OnInit {
   }
 
   isFieldInvalid(fieldName: string) {
-    const control = this.registrationForm.get(fieldName)!;
-    return control.invalid && control.touched;
+    const control = this.registrationForm.get(fieldName);
+    return control && control.invalid && control.touched;
   }
+  
 
   startWithLetterValidator(control: AbstractControl) {
     if (control && !/^[A-Za-z]/.test(control.value)) {
@@ -89,7 +92,7 @@ export class SignupComponent implements OnInit {
   }
 
   passwordValidator(control: AbstractControl) {
-    if (control && control.value) { // Add null and value check
+    if (control && control.value) { 
       const value = control.value;
       const hasLowercase = /[a-z]/.test(value);
       const hasUppercase = /[A-Z]/.test(value);

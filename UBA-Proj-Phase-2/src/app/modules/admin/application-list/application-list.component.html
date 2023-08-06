@@ -1,0 +1,115 @@
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800">Applications Details</h1>
+
+  <!-- DataTales Example -->
+  <div class="card shadow">
+    <div class="card-header py-3">
+      <h6 class="m-0">All Application List</h6>
+    </div>
+    <div class="card-body">
+
+      <div>
+        <input type="text" class="form-control" [(ngModel)]="searchStatus" (ngModelChange)="filterData()"
+          placeholder="Search by Application Status" />
+      </div>
+
+      <div class="table-responsive mt-4">
+        <table class="table text-nowrap mb-0 align-middle">
+          <thead class="text-dark fs-4">
+            <tr>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Username</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Email</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Mobile Number</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Address</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">City</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">State</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Required Load</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Connection Type</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Application Status</h6>
+              </th>
+              <th class="border-bottom-0">
+                <h6 class="fw-semibold mb-0">Actions</h6>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of filteredData">
+              <td class="border-bottom-0">
+                <div>{{ data.username }}</div>
+              </td>
+              <td class="border-bottom-0">
+                <div>{{ data.email }}</div>
+              </td>
+              <td class="border-bottom-0">
+                <div>
+                  {{ data.mobileNumber }}
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div>{{ data.address }}</div>
+              </td>
+              <td class="border-bottom-0">
+                <div>{{ data.city }}</div>
+              </td>
+              <td class="border-bottom-0">
+                <div>{{ data.state }}</div>
+              </td>
+              <td class="border-bottom-0">
+                <div>
+                  {{ data.requiredLoad }}
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div>
+                  {{ data.connectionType }}
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div *ngIf="!data.isEditing">{{ data.applicationStatus }}</div>
+                <div *ngIf="data.isEditing">
+                  <select [(ngModel)]="data.applicationStatus" class="form-control">
+                    <option value="ONHOLD">ONHOLD</option>
+                    <option value="INPROCESS">INPROCESS</option>
+                    <option value="SEND TO NEXT STAGE">
+                      SEND TO NEXT STAGE
+                    </option>
+                  </select>
+                </div>
+              </td>
+              <td class="border-bottom-0">
+                <div class="d-flex">
+                  <button *ngIf="!data.isEditing" mat-raised-button color="primary" class="btn btn-sm col-md-10"
+                    (click)="toggleEditing(data)">
+                    Change Status
+                  </button>
+                  <button *ngIf="data.isEditing" mat-raised-button color="accent" class="btn btn-sm col-md-10"
+                    (click)="saveChanges(data)">
+                    Save
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

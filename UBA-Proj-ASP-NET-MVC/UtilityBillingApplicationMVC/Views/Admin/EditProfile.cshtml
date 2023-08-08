@@ -1,0 +1,57 @@
+﻿@{
+    var userData = ViewBag.Users as Users; // Assuming ViewBag.Users contains a single Users object
+}
+
+<div id="wrapper">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Edit Profile Details</h1>
+
+
+        <div class="form-container">
+            <form method="post" action="@Url.Action("UpdateUser", "Admin")">
+                <div class="mb-3">
+                    <label for="userId" class="form-label">UserId</label>
+                    <input type="text" class="form-control" id="userId" name="userId" value="@userData.Id" readonly />
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" name="Username" value="@userData.Username" />
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="Email" value="@userData.Email" />
+                </div>
+
+                @foreach (var address in userData.Addresses)
+                {
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" id="address" name="Address" value="@address.AddressLine" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="city" class="form-label">City</label>
+                        <input type="text" class="form-control" id="city" name="City" value="@address.City" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="state" class="form-label">State</label>
+                        <input type="text" class="form-control" id="state" name="State" value="@address.State" />
+                    </div>
+                }
+                <div class="mb-3">
+                    <label for="dob" class="form-label">Date of Birth</label>
+                    <input type="date" class="form-control" id="dob" name="Dob" value="@userData.Dob.ToString("yyyy-MM-dd")" />
+                </div>
+                <div class="mb-3">
+                    <label for="maritalStatus" class="form-label">Marital Status</label>
+                    <input type="text" class="form-control" id="maritalStatus" name="MaritalStatus" value="@userData.MaritalStatus" />
+                </div>
+                <button type="submit" class="btn btn-sm btn-primary me-2">Update</button>
+            </form>
+        </div>
+
+    </div>
+    
+</div>

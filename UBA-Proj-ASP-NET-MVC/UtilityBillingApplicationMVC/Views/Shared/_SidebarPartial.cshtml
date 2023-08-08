@@ -1,0 +1,40 @@
+﻿@model UtilityBillingApplicationMVC.DTOs.NavbarViewModel
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@if (Model.UserRole == "admin" && Model.IsLoggedIn)
+{
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a asp-controller="Admin" asp-action="UsersList" class="btn btn-light text-drak col-9 m-4 mt-5">Users List</a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Admin" asp-action="Applications" class="btn btn-light text-drak col-9 m-4">Applications List</a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Admin" asp-action="GenerateBill" class="btn btn-light text-drak col-9 m-4">Generate Bill</a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Admin" asp-action="AllBillStatuses" class="btn btn-light text-drak col-9 m-4"> All Bill Status</a>
+        </li>
+    </ul>
+}
+else if(Model.UserRole == "customer" && Model.IsLoggedIn){
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a asp-controller="Users" asp-action="Profile" class="btn btn-light text-drak col-9 m-4 mt-5"> User Profile</a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Users" asp-action="Application" class="btn btn-light text-drak col-9 m-4">Track Status</a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Users" asp-action="MeterInfo" class="btn btn-light text-drak col-9 m-4">Meter Details</a>
+        </li>
+        <li class="nav-item">
+            <a asp-controller="Users" asp-action="BillInfo" class="btn btn-light text-drak col-9 m-4"> View Bill</a>
+        </li>
+    </ul>
+}

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using UtilityBillingApplicationMVC.Data;
 using UtilityBillingApplicationMVC.DTOs;
 using UtilityBillingApplicationMVC.Models;
@@ -13,13 +12,20 @@ namespace UtilityBillingApplicationMVC.Controllers
         private readonly UtilityBillingApplicationDbContext _context;
 
         private NavbarViewModel _navbarViewModel = new NavbarViewModel();
+
+        public static class CustomClaimTypes
+        {
+            public const string UserId = "UserId";
+        }
+
+        public static int UserId { get; set; }
+
+        public static string role;
         public UsersController(UtilityBillingApplicationDbContext context)
         {
             _context = context;
             _navbarViewModel.UserRole = HomeController.GetUserRole();
             _navbarViewModel.IsLoggedIn = HomeController.GetIsUserLoggedIn();
-            
-
         }
 
 
@@ -31,12 +37,8 @@ namespace UtilityBillingApplicationMVC.Controllers
             {
                 ViewBag.SuccessMessage = TempData["RegistrationSuccessMessage"];
             }
-            
-            
 
-            
             return View(_navbarViewModel);
-            
         }
 
         [HttpPost]
@@ -53,9 +55,12 @@ namespace UtilityBillingApplicationMVC.Controllers
                     // Find the user's role based on the user_id from UserRole DbSet.
                     var userRole = _context.UsersRoles.FirstOrDefault(ur => ur.UserId == user.Id);
 
+                    UserId = user.Id;
+
                     if (userRole != null)
                     {
                         _navbarViewModel.UserRole = userRole.Role;
+                        role = userRole.Role;
                         _navbarViewModel.IsLoggedIn = true;
                         if (userRole.Role == "admin")
                         {
@@ -91,7 +96,6 @@ namespace UtilityBillingApplicationMVC.Controllers
         [HttpGet]
         public IActionResult SignUp()
         {
-            
             return View(_navbarViewModel);
         }
 
@@ -185,12 +189,13 @@ namespace UtilityBillingApplicationMVC.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Logout()
+        public IActionResult Logout()
         {
             // Perform the logout logic here, if any (e.g., clearing session data, etc.).
 
             _navbarViewModel.UserRole = null;
             _navbarViewModel.IsLoggedIn = false;
+
 
             // Redirect the user to the desired page after logout.
             // In this example, let's redirect the user to the home page.
@@ -198,20 +203,118 @@ namespace UtilityBillingApplicationMVC.Controllers
         }
 
 
-        // GET: Users
-        public async Task<IActionResult> Index()
+        // GET: Users/Profile
+        public async Task<IActionResult> Profile(NavbarViewModel model)
         {
-            return _context.Users != null ?
-                        View(await _context.Users.ToListAsync()) :
-                        Problem("Entity set 'UtilityBillingApplicationDbContext.Users'  is null.");
+            // Get the currently authenticated user's ID (assuming you're using ASP.NET Core Identity)
+            /*  string userId = User.Identity.Name;*/ // Assuming you use the email as the username, otherwise adjust as needed
+            int userId = UserId;
+
+            _navbarViewModel.UserRole = role;
+            _navbarViewModel.IsLoggedIn = true;
+
+            // Retrieve the user profile data from the database based on the user ID
+            Users user = await _context.Users.Include(u => u.Addresses)
+                                .FirstOrDefaultAsync(u => u.Id == userId);
+
+
+            // Handle the case if the user is not found
+            if (user == null)
+            {
+                return NotFound();
+            }
+            // Save the user into the ViewBag to be used in the view
+            ViewBag.UserProfile = user;
+
+            // Pass the user object to the view for rendering the profile information
+            return View(_navbarViewModel);
         }
 
 
-
-        private bool UsersExists(int id)
+        public async Task<IActionResult> Application(NavbarViewModel model)
         {
-            return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
+            // Get the currently authenticated user's ID (assuming you're using ASP.NET Core Identity)
+            int userId = UserId; // Assuming you have a variable named "UserId" with the current user's ID.
+
+            // Retrieve the meter information from the database based on the user ID
+            var application = _context.ApplicationStatuses.FirstOrDefault(a => a.UserId == userId);
+
+            // Handle the case if meter information is not found
+            if (application == null)
+            {
+                return NotFound();
+            }
+            _navbarViewModel.UserRole = role;
+            _navbarViewModel.IsLoggedIn = true;
+            // Save the meter information into the ViewBag to be used in the view
+            ViewBag.Application = application;
+
+            // Pass the meter information to the view for rendering
+            return View(_navbarViewModel);
         }
 
+        public async Task<IActionResult> MeterInfo(NavbarViewModel model)
+        {
+            // Get the currently authenticated user's ID (assuming you're using ASP.NET Core Identity)
+            int userId = UserId; // Assuming you have a variable named "UserId" with the current user's ID.
+
+            // Retrieve the meter information from the database based on the user ID
+            var meterInfo = await _context.MeterInfos.FirstOrDefaultAsync(m => m.UserId == userId);
+
+            // Handle the case if meter information is not found
+            if (meterInfo == null)
+            {
+                return NotFound();
+            }
+            _navbarViewModel.UserRole = role;
+            _navbarViewModel.IsLoggedIn = true;
+            // Save the meter information into the ViewBag to be used in the view
+            ViewBag.MeterInfo = meterInfo;
+
+            // Pass the meter information to the view for rendering
+            return View(_navbarViewModel);
+        }
+
+        // GET: Billing
+        [HttpGet]
+        public IActionResult BillInfo()
+        {
+            // Assuming you have a DbSet<BillHistories> in your DbContext named _context
+            BillHistories billHistory = _context.BillHistories.Include(b => b.Meter)
+                .FirstOrDefault(b => b.UserId == UserId);
+
+            ViewBag.BillHistories = billHistory; // Pass the billing history data to the view using ViewBag
+            _navbarViewModel.UserRole = role;
+            _navbarViewModel.IsLoggedIn = true;
+            return View(_navbarViewModel);
+        }
+
+
+        // POST: Users/PayBill
+        [HttpPost]
+        public IActionResult PayBill(int billId)
+        {
+            // Here you can implement the logic to pay the bill based on the billId
+            // Assuming you have a service to handle the billing operations
+            // Fetch the billing history using the billId from the database
+            var billHistory = _context.BillHistories.FirstOrDefault(b => b.BillId == billId);
+
+            // Update the billing status to 'Paid'
+            billHistory.Status = "Paid";
+
+            // Save the changes to the database
+            _context.SaveChanges();
+
+            return RedirectToAction("BillInfo");
+
+        }
+
+        public async Task<IActionResult> Dashboard(NavbarViewModel model)
+        {
+            _navbarViewModel.UserRole = role;
+            _navbarViewModel.IsLoggedIn = true;
+
+            return View("~/Views/Users/CustomerDashboard.cshtml", _navbarViewModel);
+        }
     }
 }

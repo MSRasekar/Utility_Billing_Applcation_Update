@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\UBA-Proj-ASP-NET-MVC",
+    "\\UBA-Proj-ASP-NET-MVC\\UtilityBillingApplicationMVC",
+    "\\UBA-Proj-ASP-NET-MVC\\UtilityBillingApplicationMVC\\Models"
   ],
-  "SelectedNode": "\\C:\\Users\\DELL\\Desktop\\Be Thinker\\01. Azure Git Repo\\TS031_ManojRasekar_Project_Repository",
+  "SelectedNode": "\\UBA-Proj-ASP-NET-MVC\\UtilityBillingApplicationMVC\\Models\\ErrorViewModel.cs",
   "PreviewInSolutionExplorer": false
 }

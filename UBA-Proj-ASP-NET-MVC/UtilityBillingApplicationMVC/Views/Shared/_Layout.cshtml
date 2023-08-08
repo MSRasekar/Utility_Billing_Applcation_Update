@@ -1,4 +1,5 @@
-﻿
+﻿@model UtilityBillingApplicationMVC.DTOs.NavbarViewModel
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,11 +25,32 @@
     <!-- Navbar End -->
 
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <!-- Main Components -->
+    @if (Model.IsLoggedIn)
+    {
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 user-sidebar">
+                    <!-- Sidebar content -->
+                @await Html.PartialAsync("_SidebarPartial")
+                </div>
+                <div class="col-md-9 user-content">
+                    <main role="main" class="">
+                        @RenderBody()
+                    </main>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    }
+   
 
 
     <!-- Footer Start -->

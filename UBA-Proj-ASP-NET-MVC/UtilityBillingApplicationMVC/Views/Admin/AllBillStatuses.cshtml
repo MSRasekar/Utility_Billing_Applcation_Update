@@ -1,0 +1,58 @@
+﻿
+@{
+    var billHistories = ViewBag.BillHistories as List<BillHistories>;
+}
+
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column my-5">
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">All Bill Statuses</h1>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Bill History</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Bill ID</th>
+                                <th>User</th>
+                                <th>Billing Date</th>
+                                <th>Bill Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var billHistory in billHistories)
+                            {
+                                <tr>
+                                    <td class="border-bottom-0">
+                                        <div>@billHistory.BillId</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@billHistory.User.Username</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@billHistory.BillingDate</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@billHistory.BillAmount</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@billHistory.Status</div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

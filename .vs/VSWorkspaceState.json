@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\UBA-Proj-ASP-NET-MVC",
+    "\\UBA-Proj-ASP-NET-MVC\\UtilityBillingApplicationMVC",
+    "\\UBA-Proj-ASP-NET-MVC\\UtilityBillingApplicationMVC\\Models"
   ],
-  "SelectedNode": "\\UtilityBillingApplicationMVC.sln",
+  "SelectedNode": "\\UBA-Proj-ASP-NET-MVC\\UtilityBillingApplicationMVC\\Models\\ErrorViewModel.cs",
   "PreviewInSolutionExplorer": false
 }

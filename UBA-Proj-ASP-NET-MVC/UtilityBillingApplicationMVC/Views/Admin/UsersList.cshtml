@@ -1,0 +1,83 @@
+﻿@{
+    var userlist = ViewBag.Users as List<Users>; 
+
+}
+
+
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column my-5">
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Customer Details</h1>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Active Users</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Gender</th>
+                                <th>Date of birth</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Marital Status</th>
+                                <th>Address</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var user in userlist)
+                            {
+                                <tr>
+                                    <td class="border-bottom-0">
+                                        <div>@user.Username</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@user.Email</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@user.Gender</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@user.Dob</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@user.Addresses.FirstOrDefault()?.City</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@user.Addresses.FirstOrDefault()?.State</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@user.MaritalStatus</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@user.Addresses.FirstOrDefault()?.AddressLine</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div class="d-flex">
+                                            <button class="btn btn-sm btn-warning me-2" onclick="window.location.href='@Url.Action("EditProfile", "Admin", new { userId = user.Id })'">Edit</button>
+                                            <button class="btn btn-sm btn-danger me-2" onclick="window.location.href='@Url.Action("DeleteProfile", "Admin", new { userId = user.Id })'">Delete</button>
+
+                                        </div>
+                                    </td>
+
+                                </tr>
+
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</div>

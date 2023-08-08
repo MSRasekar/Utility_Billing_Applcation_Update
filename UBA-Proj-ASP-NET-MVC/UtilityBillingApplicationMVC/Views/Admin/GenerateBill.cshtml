@@ -1,0 +1,239 @@
+﻿@{
+    var dynamicData = ViewBag.Users as List<Users>;
+    // Replace "CustomerDataViewModel" with your actual model type
+}
+
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column my-5">
+
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <h3 class="h4 mb-2 text-gray-800">Bill Generation</h3>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Active Users</h6>
+            </div>
+            <div class="card-body">
+                
+
+                <div class="form-group">
+                    <label for="userId">User:</label>
+                    <select class="form-control" id="userId" onchange="onSelectUser()">
+                        <option value="">Select a user</option>
+                        @foreach (var user in ViewBag.Users)
+                        {
+                            <option value="@user.Id">@user.Username</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="bill-form-container" ">
+                    <div class="my-2">
+
+                    <h6>Create Bill for User <span id="selectedUserName"></span></h6>
+                    </div>
+
+
+                @using (Html.BeginForm("SubmitBill", "Admin", FormMethod.Post, new { id = "billForm" }))
+                {
+                    @Html.Hidden("selectedUserId", null, new { id = "selectedUserId" })
+
+                        <div class="form-group">
+                            <label for="billingUnit">Billing Unit:</label>
+                            <input type="number" class="form-control" id="billingUnit" name="billingUnit" onchange="updateTotalBillingAmount()" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="totalBilling">Total Billing Amount:</label>
+                            <input type="text" class="form-control" id="totalBilling" readonly />
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <button type="button" class="btn btn-primary" onclick="submitForm()">Create Bill</button>
+                        </div>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</div>
+
+@*
+<div id="wrapper">
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">Customer Details</h1>
+
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="userId">User:</label>
+                    <select class="form-control" id="userId" onchange="onSelectUser()">
+                        <option value="">Select a user</option>
+                        @foreach (var user in ViewBag.Users)
+                        {
+                            <option value="@user.Id">@user.Username</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="bill-form-container" ">
+                    <h4>Create Bill for User <span id="selectedUserName"></span></h4>
+
+                    @using (Html.BeginForm("SubmitBill", "Admin", FormMethod.Post, new { id = "billForm" }))
+                    {
+                        @Html.Hidden("selectedUserId", null, new { id = "selectedUserId" })
+
+                        <div class="form-group">
+                            <label for="billingUnit">Billing Unit:</label>
+                            <input type="number" class="form-control" id="billingUnit" name="billingUnit" onchange="updateTotalBillingAmount()" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="totalBilling">Total Billing Amount:</label>
+                            <input type="text" class="form-control" id="totalBilling" readonly />
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <button type="button" class="btn btn-primary" onclick="submitForm()">Create Bill</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+*@
+
+@section scripts {
+    <script>
+        function onSelectUser() {
+            var selectedUserId = $("#userId").val();
+
+            var selectedUserName = $("#userId option:selected").text();
+            if (selectedUserId) {
+                $(".bill-form-container").show();
+                $("#selectedUserId").val(selectedUserId); // Set the selectedUserId in the hidden input field
+                $("#selectedUserName").text(selectedUserName);
+
+                // Calculate and set the total billing amount
+                updateTotalBillingAmount();
+            } else {
+                $(".bill-form-container").hide();
+            }
+        }
+
+        function updateTotalBillingAmount() {
+            var billingUnit = parseInt($("#billingUnit").val());
+            var totalBillingAmount = billingUnit * 8; // Assuming billing rate is 100 per unit, adjust it based on your billing logic
+            $("#totalBilling").val(totalBillingAmount);
+        }
+
+        function submitForm() {
+            updateTotalBillingAmount(); // Update the total billing amount before submitting the form
+            $("#billForm").submit();
+        }
+
+        // Attach the event listener to the billing unit input field
+        $(document).ready(function () {
+            $("#billingUnit").change(function () {
+                updateTotalBillingAmount();
+            });
+        });
+    </script>
+}
+
+@*
+
+<div id="wrapper">
+
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <h1 class="h3 mb-2 text-gray-800">Customer Details</h1>
+
+
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="userId">User:</label>
+                    <select class="form-control" id="userId" onchange="onSelectUser()">
+                        <option value="">Select a user</option>
+                        @foreach (var user in ViewBag.Users)
+                        {
+                            <option value="@user.Id">@user.Username</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="bill-form-container" style="display: none;">
+                    <h4>Create Bill for User <span id="selectedUserName"></span></h4>
+
+                    @using (Html.BeginForm("SubmitBill", "Admin", FormMethod.Post, new { id = "billForm" }))
+                    {
+                        @Html.Hidden("selectedUserId", null, new { id = "selectedUserId" })
+
+                        <div class="form-group">
+                            <label for="billingUnit">Billing Unit:</label>
+                            <input type="number" class="form-control" id="billingUnit" name="billingUnit" onchange="updateTotalBillingAmount()" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="totalBilling">Total Billing Amount:</label>
+                            <input type="text" class="form-control" id="totalBilling" readonly />
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <button type="button" class="btn btn-primary" onclick="submitForm()">Create Bill</button>
+                        </div>
+                    }
+                </div>
+
+                @section scripts {
+                    <script>
+                        function onSelectUser() {
+                            var selectedUserId = $("#userId").val();
+
+                            var selectedUserName = $("#userId option:selected").text();
+                            if (selectedUserId) {
+                                $(".bill-form-container").show();
+                                $("#selectedUserId").val(selectedUserId); // Set the selectedUserId in the hidden input field
+                                $("#selectedUserName").text(selectedUserName);
+
+                                // Calculate and set the total billing amount
+                                updateTotalBillingAmount();
+                            } else {
+                                $(".bill-form-container").hide();
+                            }
+                        }
+
+                        function updateTotalBillingAmount() {
+                            var billingUnit = parseInt($("#billingUnit").val());
+                            var totalBillingAmount = billingUnit * 8; // Assuming billing rate is 100 per unit, adjust it based on your billing logic
+                            $("#totalBilling").val(totalBillingAmount);
+                        }
+
+                        function submitForm() {
+                            updateTotalBillingAmount(); // Update the total billing amount before submitting the form
+                            $("#billForm").submit();
+                        }
+
+                        // Attach the event listener to the billing unit input field
+                        $(document).ready(function () {
+                            $("#billingUnit").change(function () {
+                                updateTotalBillingAmount();
+                            });
+                        });
+                    </script>
+                }
+
+
+            </div>
+
+        </div>
+        
+    </div>
+</div>*@

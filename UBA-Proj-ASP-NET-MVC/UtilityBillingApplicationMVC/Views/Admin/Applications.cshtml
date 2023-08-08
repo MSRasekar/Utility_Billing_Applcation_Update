@@ -1,0 +1,128 @@
+﻿@{
+    var applications = ViewBag.Applications as List<ApplicationStatuses>;
+
+}
+
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column my-5">
+
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Applications Details</h1>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Active Users</h6>
+            </div>
+            <div class="card-body">
+                <div>
+                    <input type="text" class="form-control" placeholder="Search by Application Status" />
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table text-nowrap mb-0 align-middle">
+                        <!-- Table header -->
+                        <thead class="text-dark fs-4">
+                            <tr>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">UserName</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Email</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Address</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">City</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">State</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Load</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Connection Type</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Application Status</h6>
+                                </th>
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Actions</h6>
+                                </th>
+                            </tr>
+                        </thead>
+                        <!-- Table body -->
+                        <tbody>
+                            @foreach (var data in applications)
+                            {
+                                <tr>
+                                    <td class="border-bottom-0">
+                                        <div>@data.User?.Username</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@data.User?.Email</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@data.User?.Addresses?.FirstOrDefault()?.AddressLine</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@data.User?.Addresses?.FirstOrDefault()?.City</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@data.User?.Addresses?.FirstOrDefault()?.State</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@data.MeterInfos.FirstOrDefault()?.RequiredLoad</div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div>@data.MeterInfos.FirstOrDefault()?.ConnectionType</div>
+                                    </td>
+                                    <form id="form_@data.ApplicationStatusId" action="@Url.Action("Applications", "Admin")" method="post">
+                                    <td class="border-bottom-0">
+                                        <div>
+
+                                            <input type="hidden" name="applicationId" value="@data.ApplicationStatusId" />
+                                            <select name="status" class="form-control">
+                                                    @if (data.Status == "pending")
+                                                    {
+                                                    <option value="pending">pending</option>
+                                                    <option value="completed">completed</option>
+                                                    <option value="rejected">rejected</option>
+                                                    }
+                                                    @if (data.Status == "completed")
+                                                    {
+                                                    <option value="completed">completed</option>
+                                                    <option value="pending">pending</option>
+                                                    <option value="rejected">rejected</option>
+                                                    }
+                                                    @if (data.Status == "rejected")
+                                                    {
+                                                    <option value="rejected">rejected</option>
+                                                    <option value="pending">pending</option>
+                                                    <option value="completed">completed</option>
+                                                    }
+
+                                            </select>
+
+                                        </div>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <div class="d-flex">
+                                            <button type="submit" class="btn btn-sm btn-success me-2">Save</button>
+
+                                        </div>
+                                    </td>
+                                    </form>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container-fluid -->
+</div>

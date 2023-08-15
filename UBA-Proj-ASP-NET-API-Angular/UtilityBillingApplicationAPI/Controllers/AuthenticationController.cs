@@ -21,7 +21,7 @@ namespace UtilityBillingApplicationAPI.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> Register([FromBody] RegistrationDTO registerUser, string role)
+        public async Task<IActionResult> Register([FromBody] RegistrationDTO registerUser)
         {
             var userExist = await _userManager.FindByEmailAsync(registerUser.Email);
 
@@ -30,7 +30,7 @@ namespace UtilityBillingApplicationAPI.Controllers
                 return StatusCode(StatusCodes.Status403Forbidden, new ResponseDTO { Status = "Error", Message = "User already exists!" });
             }
 
-            var result = await _authRepository.RegisterUserAsync(registerUser, role);
+            var result = await _authRepository.RegisterUserAsync(registerUser);
 
             if (result.Succeeded)
             {
@@ -49,7 +49,7 @@ namespace UtilityBillingApplicationAPI.Controllers
 
             if (result.Succeeded)
             {
-                var user = await _userManager.FindByEmailAsync(loginUser.Username);
+                var user = await _userManager.FindByEmailAsync(loginUser.Email);
                 var token = await _authRepository.GenerateJwtToken(user);
 
                 return Ok(new AuthResponseDTO { IsAuthSuccessful = true, Token = token });

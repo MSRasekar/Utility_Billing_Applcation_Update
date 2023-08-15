@@ -21,8 +21,10 @@ namespace UtilityBillingApplicationAPI.Repositories
             _jwtHandler = jwtHandler;
         }
 
-        public async Task<IdentityResult> RegisterUserAsync(RegistrationDTO registerUser, string role)
+        public async Task<IdentityResult> RegisterUserAsync(RegistrationDTO registerUser)
         {
+            string role = "User";
+
             if (await _roleManager.RoleExistsAsync(role))
             {
                 var user = new ApplicationUser
@@ -79,7 +81,7 @@ namespace UtilityBillingApplicationAPI.Repositories
 
         public async Task<SignInResult> LoginUserAsync(LoginDTO loginUser)
         {
-            var user = await _userManager.FindByEmailAsync(loginUser.Username);
+            var user = await _userManager.FindByEmailAsync(loginUser.Email);
             if (user == null)
             {
                 return SignInResult.Failed;

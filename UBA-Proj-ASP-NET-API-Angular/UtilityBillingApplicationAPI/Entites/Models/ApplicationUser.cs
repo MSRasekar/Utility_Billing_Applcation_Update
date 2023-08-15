@@ -13,7 +13,7 @@ namespace UtilityBillingApplicationAPI.Entites.Models
         [Required(ErrorMessage = " MaritalStatus is required")]
         public string MaritalStatus { get; set; }
 
-        [Required(ErrorMessage = " Address1 is required")]
+        [Required(ErrorMessage = " AddressLine is required")]
         public string AddressLine { get; set; }
         [Required(ErrorMessage = " City is required")]
         public string City { get; set; }

@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'UBA-Angular-with-API'`, () => {
+  it(`should have as title 'uba-proj-ng'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('UBA-Angular-with-API');
+    expect(app.title).toEqual('uba-proj-ng');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('UBA-Angular-with-API app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('uba-proj-ng app is running!');
   });
 });
